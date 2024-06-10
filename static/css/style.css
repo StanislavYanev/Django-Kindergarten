@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EEEEEE;
+}
+
+header {
+    background-color: #7E8EF1;
+    color: #D1D8C5;
+    padding: 0 10px;
+    text-align: center;
+
+}
+
+header h1  {
+    margin: 10px;
+}
+
+nav ul {
+    text-align: right;
+    margin: 0;
+    list-style: none;
+    padding: 20px;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #D1D8C5;
+    font-weight: bold;
+}
+
+section {
+    padding: 20px;
+    margin: 20px 0;
+}
+
+#about {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#gallery {
+    text-align: center;
+}
+
+.gallery img {
+    width: 200px;
+    height: 150px;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+#contact form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#contact form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+#contact form input,
+#contact form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#contact form button {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+footer {
+    background-color: #615EFC;
+    color: #D1D8C5;
+    text-align: center;
+    padding: 5px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.carousel-img {
+    max-width: 60%; /* Adjust the percentage as needed */
+    max-height: 300px; /* Adjust the height as needed */
+    margin: 0 auto; /* Center the image */
+}
+
+
+.move-down {
+    margin-top: 25px;
+}
+
+.img-uniform {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+
+h1 {
+    margin: 10px;
+    font-size: 100px;
+    font-family: 'Cursive',"Helvetica Neue";
+    color: #615EFC;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    color: #7E8EF1;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.about {
+    color: gray;
+    font-size: 20px;
+    text-align: center;
+    margin: 20px;
+}
