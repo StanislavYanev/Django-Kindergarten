@@ -1,0 +1,15 @@
+{%  extends "base.html" %}
+
+{% block title %}
+    Gallery
+{% endblock %}
+
+{%  block content %}
+    <ul>
+    {% for image in images %}
+        <li>
+            <img src="{{ image.image.url }}" alt="{{ product.name }} width= '200'">
+        </li>
+    {% endfor %}
+    </ul>
+{%  endblock %}
