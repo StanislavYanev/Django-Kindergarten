@@ -55,6 +55,7 @@ section {
     height: 150px;
     margin: 10px;
     border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #contact form {
@@ -124,7 +125,7 @@ h1 {
     text-align: center;
 }
 
-h3 {
+h3  {
     text-align: center;
     color: #7E8EF1;
 }

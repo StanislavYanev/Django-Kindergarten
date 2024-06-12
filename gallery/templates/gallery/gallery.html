@@ -1,15 +1,39 @@
-{%  extends "base.html" %}
+{% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     Gallery
 {% endblock %}
 
-{%  block content %}
-    <ul>
-    {% for image in images %}
-        <li>
-            <img src="{{ image.image.url }}" alt="{{ product.name }} width= '200'">
-        </li>
-    {% endfor %}
-    </ul>
-{%  endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/gallery-css.css' %}">
+{% endblock %}
+
+{% block content %}
+    <body>
+    <section>
+        <div class="d-grid gap-2 col-3 mx-auto">
+            <button class="btn btn-primary" type="button">Here you can put the artwork of your child.</button>
+        </div>
+    </section>
+
+    <section>
+        <div>
+            <h2>See the true masterpieces of art created by your children.</h2>
+        </div>
+        <div class="container">
+            <div class="gallery">
+                {% for image in images %}
+
+                    <figure class="gallery__item gallery__item--1">
+                        <img src="{{ image.image.url }}" alt="{{ product.name }}" class="gallery__img">
+                        <span class="text"> Blal          kghkghj    hgjkhgkja </span>
+                    </figure>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    </body>
+{% endblock %}
+
+
