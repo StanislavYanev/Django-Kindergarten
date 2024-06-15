@@ -15,7 +15,7 @@
     {% block extra_css %}
 
     {% endblock %}
-    
+
 </head>
 <header>
 
@@ -26,8 +26,14 @@
             <li><a href="/about">About Us</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="{% url 'user:sing-in' %}">Sing in</a></li>
-            <li><a href="#about">Log in</a></li>
-            <li><a href="#contact">Log out</a></li>
+            <li><a href="{% url 'user:log-in' %}">Log in</a></li>
+            <li>
+                <form action="{% url 'user:log-out' %}" method="post">
+                    {% csrf_token %}
+                    <button>Log Out</button>    
+                </form>
+            </li>
+{#            <li><a href="{% url 'user:log-out' %}">Log out</a></li>#}
         </ul>
     </nav>
 </header>
