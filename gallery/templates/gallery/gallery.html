@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Gallery
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/gallery-css.css' %}">
+{% endblock %}
+
+{% block content %}
+    <body>
+    <section>
+        <div class="d-grid gap-2 col-3 mx-auto">
+
+            <button onclick="window.location.href='{% url 'gallery:image_view' %}'" class="btn btn-primary" type="button">Here can put the artwork of your child.</button>
+        </div>
+    </section>
+
+    <section>
+        <div>
+            <h2>See the true masterpieces of art created by your children.</h2>
+        </div>
+
+        <div class="container">
+            <div class="gallery">
+                {% for image in images %}
+                        <img src="{{ image.image.url }}" alt="{{ image.name }}" class="gallery__img">
+                        <p>Name: {{ image.name }} Age: {{ image.age }} Group: {{ image.group }}</p>
+
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    </body>
+{% endblock %}

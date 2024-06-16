@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Log In
+{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="pos">
+        <div class="container login pos">
+            <form action="" method="post">
+                {% csrf_token %}
+                <h2>Log In</h2>
+                <div class="form-floating mb-3">
+                    <p> </p>
+                    <p>Username:</p>
+                    {#                    {{ form.username.label_tag }}#}
+                    {{ form.username }}
+                </div>
+                <div class="form-floating mb-3">
+                    <p>Password:</p>
+                    {#                    {{ form.password.label_tag }}#}
+                    {{ form.password }}
+                </div>
+                <div class="center">
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

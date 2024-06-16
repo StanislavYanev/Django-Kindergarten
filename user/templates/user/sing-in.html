@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Sing In
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="pos">
+        <div class="container login pos">
+            <form action="" method="post">
+                {% csrf_token %}
+                <h2>Sing In</h2>
+                <div class="form-floating mb-3">
+                    <p></p>
+                    <p>Username:</p>
+                    {{ form.username }}
+                </div>
+                <div class="form-floating mb-3">
+                    <p>Password:</p>
+                    {{ form.password1 }}
+                </div>
+
+                <div class="form-floating mb-3">
+                    <p>Password:</p>
+                    {{ form.password2 }}
+                </div>
+                <div class="center">
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

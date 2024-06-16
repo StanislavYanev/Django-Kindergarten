@@ -1,0 +1,18 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+h2 {
+    text-align: center;
+    margin: 10px;
+    font-size: 100px;
+    font-family: 'Cursive', "Helvetica Neue";
+    color: #615EFC;
+    padding: 20px 0;
+
+}
+
