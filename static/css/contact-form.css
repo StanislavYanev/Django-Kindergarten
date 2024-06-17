@@ -1,0 +1,27 @@
+p {
+	color: black;
+
+}
+.box {
+    width: 500px;
+    height: 900px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 40px;
+    background-color: #7E8EF1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5), -10px -10px 30px rgba(0, 0, 255, 0.3), inset 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.pos {
+
+    display: flex;
+    height: 250%;
+    margin: 120px;
+    justify-content: center;
+    align-items: center;
+}

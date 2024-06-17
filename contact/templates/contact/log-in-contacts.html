@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Contact form
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/contact-form.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container box">
+        <form action="" method="post">
+            {% csrf_token %}
+            <h2>Contact Form</h2>
+            <div class="form-floating mb-3">
+                <p></p>
+                <p>Topic:</p>
+                {{ form.topic }}
+            </div>
+            <div class="form-floating mb-3">
+                <p>First Name:</p>
+                {{ form.name }}
+            </div>
+            <div class="form-floating mb-3">
+                <p>Last Name:</p>
+                {{ form.last_name }}
+            </div>
+            <div class="form-floating mb-3">
+                <p>E-mail:</p>
+                {{ form.email }}
+            </div>
+            <div class="form-floating mb-3">
+                <p>Phone number:</p>
+                {{ form.phone }}
+            </div>
+            <div class="form-floating mb-3">
+                <p>Your Comment:</p>
+                {{ form.comment }}
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="submit" class="btn btn-primary">Send</button>
+
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

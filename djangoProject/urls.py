@@ -26,6 +26,8 @@ urlpatterns = [
     path('about/', views.about),
     path("gallery/", include("gallery.urls")),
     path('sing-in/', include('user.urls'), name='user'),
+    path('contact/', include('contact.urls'), name='contact'),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

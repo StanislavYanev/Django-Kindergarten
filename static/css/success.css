@@ -1,0 +1,13 @@
+h2 {
+    color: green;
+
+}
+
+div {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+
+}
