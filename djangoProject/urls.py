@@ -27,6 +27,7 @@ urlpatterns = [
     path("gallery/", include("gallery.urls")),
     path('sing-in/', include('user.urls'), name='user'),
     path('contact/', include('contact.urls'), name='contact'),
+    path('admin-panel/', include('admin_panel.urls'), name='admin_panel'),
 
 ]
 

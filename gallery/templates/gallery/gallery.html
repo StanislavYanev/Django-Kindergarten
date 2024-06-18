@@ -12,10 +12,12 @@
 {% block content %}
     <body>
     <section>
+        {% if user.is_authenticated %}
         <div class="d-grid gap-2 col-3 mx-auto">
 
             <button onclick="window.location.href='{% url 'gallery:image_view' %}'" class="btn btn-primary" type="button">Here can put the artwork of your child.</button>
         </div>
+        {% endif %}
     </section>
 
     <section>

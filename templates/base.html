@@ -24,23 +24,26 @@
 
     <nav>
         <ul>
+            {% if user.is_authenticated %}
+                <p class="welcome">Welcome, {{ user.username }}</p>
+                <li><a href="{% url 'admin_panel:admin' %}">Admin Panel</a></li>
+            {% endif %}
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'gallery:gallery' %}">Gallery</a></li>
             <li><a href="/about">About Us</a></li>
-            <li><a href="{%  url 'contact:contact' %}">Contact</a></li>
+            <li><a href="{% url 'contact:contact' %}">Contact</a></li>
             {% if user.is_authenticated %}
-
-                    <form action="{% url 'user:log-out' %}" method="post">
-                        {% csrf_token %}
-                        <button class="btn btn-primary">Log Out</button>
-                    </form>
+                <form action="{% url 'user:log-out' %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-primary">Log Out</button>
+                </form>
 
             {% else %}
                 <li><a href="{% url 'user:sing-in' %}">Sing in</a></li>
                 <li><a href="{% url 'user:log-in' %}">Log in</a></li>
 
             {% endif %}
- 
+
         </ul>
 
     </nav>

@@ -17,17 +17,17 @@
                 {% csrf_token %}
                 <h2>Sing In</h2>
                 <div class="form-floating mb-3">
-                    <p></p>
-                    <p>Username:</p>
+                    <p ></p>
+                    <p class="special">Username:</p>
                     {{ form.username }}
                 </div>
                 <div class="form-floating mb-3">
-                    <p>Password:</p>
+                    <p class="special">Password:</p>
                     {{ form.password1 }}
                 </div>
 
                 <div class="form-floating mb-3">
-                    <p>Password:</p>
+                    <p class="special">Password:</p>
                     {{ form.password2 }}
                 </div>
                 <div class="center">

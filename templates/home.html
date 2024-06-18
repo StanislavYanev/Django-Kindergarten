@@ -6,6 +6,10 @@
 
 {% block content %}
     <section class="top-text">
+        {% if user.is_authenticated %}
+            <h1>Hello, {{ user.username }} in our </h1>
+        {% endif %}
+
         <h1>Little Dreamers Academy </h1>
     </section>
 

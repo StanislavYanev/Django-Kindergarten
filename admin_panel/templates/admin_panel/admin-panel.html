@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{%  load static %}
+{% block title %}
+    Admin Panel
+{%  endblock %}
+    {% block extra_css %}
+        <link rel="stylesheet" href="{%  static 'css/admin-panel.css' %}">
+    {% endblock %}
+
+{% block content %}
+    <div class="container box">
+        <ul class="special">
+            <li><a href="">Contact requests</a></li>
+            <li><a href="">Children Groups</a></li>
+            <li><a href="">Teachers</a></li>
+            <li><a href="">Parents information</a></li>
+            <li><a href="">Create New Event</a></li>
+            <li><a href="">Manage Gallery</a></li>
+        </ul>
+    </div>
+{%  endblock %}

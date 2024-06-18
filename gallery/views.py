@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import GalleryImage
 from .forms import GalleryForm
-from django.http import HttpResponse
+
 
 # Create your views here.
 
