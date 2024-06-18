@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Admin Panel
+{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/admin-contact.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container box">
+        <ul class="special">
+            <table class="container">
+                <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Full name</th>
+                    <th>E-mail</th>
+                    <th>Phone number</th>
+                    <th>Comment</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for contact in contacts %}
+                    <tr>
+                        <td>{{ contact.topic }}</td>
+                        <td>{{ contact.name }} {{ contact.last_name }}</td>
+                     <td>{{ contact.email }}</td>
+                     <td>{{ contact.phone }}</td>
+                    <td>{{ contact.comment }}</td>
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </ul>
+    </div>
+{% endblock %}

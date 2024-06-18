@@ -26,8 +26,12 @@
         <ul>
             {% if user.is_authenticated %}
                 <p class="welcome">Welcome, {{ user.username }}</p>
-                <li><a href="{% url 'admin_panel:admin' %}">Admin Panel</a></li>
             {% endif %}
+        
+            {% if  user.is_authenticated and user.is_superuser %}
+                <li><a href="{% url 'admin_panel:admin' %}">Admin Dashboard</a></li>
+            {% endif %}
+        
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'gallery:gallery' %}">Gallery</a></li>
             <li><a href="/about">About Us</a></li>

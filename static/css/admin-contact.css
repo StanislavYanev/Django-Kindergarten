@@ -1,6 +1,6 @@
 .box {
-    width: 500px;
-    height: 400px;
+    width: auto;
+    height: auto;
     border: 2px solid #000;
     border-radius: 8px;
     padding: 40px;
@@ -20,3 +20,24 @@ ul.special li {
     position: relative;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: black;
+}
+
+th {
+    background-color: #91DDCF;
+}
+tr:nth-child(even) {
+            background-color: #E8C5E5;
+        }
+        tr:nth-child(odd) {
+            background-color: #F19ED2;
+        }
