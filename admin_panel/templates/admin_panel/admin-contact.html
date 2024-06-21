@@ -15,9 +15,6 @@
                 <tr>
                     <th>Topic</th>
                     <th>Full name</th>
-                    <th>E-mail</th>
-                    <th>Phone number</th>
-                    <th>Comment</th>
                 </tr>
                 </thead>
 
@@ -25,10 +22,8 @@
                 {% for contact in contacts %}
                     <tr>
                         <td>{{ contact.topic }}</td>
-                        <td>{{ contact.name }} {{ contact.last_name }}</td>
-                     <td>{{ contact.email }}</td>
-                     <td>{{ contact.phone }}</td>
-                    <td>{{ contact.comment }}</td>
+                        <td><a href="{%  url 'admin_panel:admin-contact-info' contact.pk %}">{{ contact.name }} {{ contact.last_name }}</a></td>
+                        <td><a href="{% url 'admin_panel:admin-contact-delete' contact.pk %}">Delete data</a></td>
                     </tr>
 
                 {% endfor %}
