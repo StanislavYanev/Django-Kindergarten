@@ -8,4 +8,6 @@ urlpatterns = [
     path('admin-contact/', views.contact_view_admin, name='admin-contact'),
     path('admin-contact/info/<int:pk>', views.contact_info_view, name='admin-contact-info'),
     path('admin-contact-delete/<int:pk>', views.contact_delete_view, name='admin-contact-delete'),
+    path('admin-contact-create/>', views.contact_create_view, name='admin-contact-create'),
+    path('admin-contact-edit/<int:pk>', views.contact_edit_view, name='admin-contact-edit'),
 ]

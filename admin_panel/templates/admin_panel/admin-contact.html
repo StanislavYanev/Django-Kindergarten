@@ -10,11 +10,14 @@
 {% block content %}
     <div class="container box">
         <ul class="special">
+        <a href="{%  url 'admin_panel:admin-contact-create' %}">Create New Contact</a>
             <table class="container">
                 <thead>
                 <tr>
                     <th>Topic</th>
                     <th>Full name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
 
@@ -23,6 +26,7 @@
                     <tr>
                         <td>{{ contact.topic }}</td>
                         <td><a href="{%  url 'admin_panel:admin-contact-info' contact.pk %}">{{ contact.name }} {{ contact.last_name }}</a></td>
+                        <td><a href="{% url 'admin_panel:admin-contact-edit' contact.pk %}">Edit data</a></td>
                         <td><a href="{% url 'admin_panel:admin-contact-delete' contact.pk %}">Delete data</a></td>
                     </tr>
 
