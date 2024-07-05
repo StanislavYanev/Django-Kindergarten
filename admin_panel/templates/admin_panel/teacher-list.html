@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Teacher List
+{% endblock %}
+
+{% block content %}
+    <a href="{% url 'admin_panel:admin-teacher-access' %}">Change access</a>
+	{% for teacher in teachers %}
+        <div class="container box">
+        <ul class="special">
+            <li>Name: {{ teacher.name }}</li>
+            <li>Last Name: {{ teacher.last_name }}</li>
+            <li>E mail: {{ teacher.email }}</li>
+
+        </ul>
+    </div>
+    {%  endfor %}
+{% endblock %}

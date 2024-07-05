@@ -12,7 +12,9 @@
         <ul class="special">
             <li><a href="{% url 'admin_panel:admin-contact' %}">Contact requests</a></li>
             <li><a href="">Children Groups</a></li>
-            <li><a href="">Teachers</a></li>
+            {% if perms.user.view_teacher%}
+            <li><a href="{% url 'admin_panel:admin-teacher-list' %}">Teachers</a></li>
+            {% endif %}
             <li><a href="">Parents information</a></li>
             <li><a href="">Create New Event</a></li>
             <li><a href="">Manage Gallery</a></li>

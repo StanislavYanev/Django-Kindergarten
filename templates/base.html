@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -27,11 +28,12 @@
             {% if user.is_authenticated %}
                 <p class="welcome">Welcome, {{ user.username }}</p>
             {% endif %}
-        
-            {% if  user.is_authenticated and user.is_superuser %}
+
+            {#            {% if  user.is_authenticated and user.is_superuser%}#}
+            {% if  perms.user.can_view_admin_panel %}
                 <li><a href="{% url 'admin_panel:admin' %}">Admin Dashboard</a></li>
             {% endif %}
-        
+
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'gallery:gallery' %}">Gallery</a></li>
             <li><a href="/about">About Us</a></li>
