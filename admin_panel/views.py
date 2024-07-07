@@ -4,7 +4,10 @@ from django.contrib.auth.decorators import login_required, permission_required
 from contact.forms import ContactForm
 from contact.models import Contact
 from user.models import Teacher
+from guardian.shortcuts import get_objects_for_user,get_objects_for_group
+from user.models import ChildrenGroup
 from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
 
 
 @login_required
@@ -68,7 +71,16 @@ def teacher_list_view(request):
     return render(request, 'admin_panel/teacher-list.html', {"teachers": teachers})
 
 
-
+@login_required
+@permission_required("user.can_view_children_group")
+def children_group_members_view(request):
+    try:
+        children_group = get_objects_for_user(
+            request.user, 'user.can_view_strawberry_group', klass=ChildrenGroup)
+        print(children_group)
+        return render(request,"admin_panel/child-group-list.html", {"children_group": children_group})
+    except:
+        return redirect("admin_panel:admin-list")
 
 
 

@@ -11,8 +11,18 @@ class ChildrenGroup(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
 
+    class Meta:
+        permissions = [
+            ("can_view_child_group", "Can view children group strawberry "),
+            ("can_view_little_rascals_group", "Can view children group little rascals "),
+        ]
+
     def __str__(self):
         return self.name
+
+@receiver(post_save, sender=ChildrenGroup)
+def set_permission(sender, instance, **kwargs):
+    assign_perm("can_access_children_group_teacher", instance.user, instance)
 
 
 #This will be only for Admin access
@@ -30,6 +40,7 @@ class Teacher(models.Model):
     class Meta:
         permissions = [
             ("can_view_admin_panel", "Can view admin panel"),
+            ("can_view_children_group", "Can view children group"),
         ]
 
     def __str__(self):
@@ -50,8 +61,6 @@ class Child(models.Model):
     GENDER_CHOICES = [
         ('M', 'Male'),
         ('F', 'Female'),
-        ('O', 'Other'),
-        ('N', 'Prefer not to say'),
     ]
 
     name = models.CharField(max_length=100)

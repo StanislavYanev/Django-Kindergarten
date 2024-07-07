@@ -5,13 +5,10 @@
 {% endblock %}
 
 {% block content %}
-    {% for teacher in teachers %}
+    {% for child in children_group %}
         <div class="container box">
             <ul class="special">
-                <li>Name: {{ teacher.name }}</li>
-                <li>Last Name: {{ teacher.last_name }}</li>
-                <li>E mail: {{ teacher.email }}</li>
-
+                <li>Name: {{ child.name }}</li>
             </ul>
         </div>
     {% endfor %}

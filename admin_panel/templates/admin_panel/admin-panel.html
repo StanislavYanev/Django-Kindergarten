@@ -1,23 +1,27 @@
 {% extends 'base.html' %}
-{%  load static %}
+{% load static %}
 {% block title %}
     Admin Panel
-{%  endblock %}
-    {% block extra_css %}
-        <link rel="stylesheet" href="{%  static 'css/admin-panel.css' %}">
-    {% endblock %}
+{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/admin-panel.css' %}">
+{% endblock %}
 
 {% block content %}
     <div class="container box">
         <ul class="special">
             <li><a href="{% url 'admin_panel:admin-contact' %}">Contact requests</a></li>
-            <li><a href="">Children Groups</a></li>
-            {% if perms.user.view_teacher%}
-            <li><a href="{% url 'admin_panel:admin-teacher-list' %}">Teachers</a></li>
+
+            {% if perms.user.can_view_admin_panel %}
+                <li><a href="{% url 'admin_panel:admin-child-group-list' %}">Children Group</a></li>
+            {% endif %}
+            {% if perms.user.view_teacher %}
+                 <li><a href="">Children Groups</a></li>
+                <li><a href="{% url 'admin_panel:admin-teacher-list' %}">Teachers</a></li>
             {% endif %}
             <li><a href="">Parents information</a></li>
             <li><a href="">Create New Event</a></li>
             <li><a href="">Manage Gallery</a></li>
         </ul>
     </div>
-{%  endblock %}
+{% endblock %}

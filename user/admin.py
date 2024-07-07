@@ -2,14 +2,20 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import Teacher,ChildrenGroup,Child,Parent
 from django.contrib.auth.models import User, Group
+from guardian.admin import GuardedModelAdmin
+
+class ChildrenGroupAdmin(GuardedModelAdmin):
+    pass
 
 
 admin.site.register(Teacher)
-# admin.site.register(ChildrenGroup)
+admin.site.register(ChildrenGroup, ChildrenGroupAdmin)
 admin.site.register(Child)
 admin.site.register(Parent)
 admin.site.unregister(User)
 # admin.site.unregister(Group)
+
+
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
@@ -42,14 +48,14 @@ class ReadOnlyAdminMixin:
     def has_view_permission(self, request, obj=None):
         return True
 #
-@admin.register(ChildrenGroup)
-class ProductAdmin(ReadOnlyAdminMixin, admin.ModelAdmin):
-    list_display = ("name", )
-
-    def get_form(self, request, obj=None, **kwargs):
-        form = super().get_form(request, obj, **kwargs)
-        is_superuser = request.user.is_superuser
-
-        if not is_superuser:
-            form.base_fields['name'].disabled = True
-        return form
+# @admin.register(ChildrenGroup)
+# class ProductAdmin(ReadOnlyAdminMixin, admin.ModelAdmin):
+#     list_display = ("name", )
+#
+#     def get_form(self, request, obj=None, **kwargs):
+#         form = super().get_form(request, obj, **kwargs)
+#         is_superuser = request.user.is_superuser
+#
+#         if not is_superuser:
+#             form.base_fields['name'].disabled = True
+#         return form
