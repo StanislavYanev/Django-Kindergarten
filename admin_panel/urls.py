@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin-contact/', views.contact_view_admin, name='admin-contact'),
     path('admin-teacher-list/', views.teacher_list_view, name='admin-teacher-list'),
     path('admin-child-group-list/', views.children_group_members_view, name='admin-child-group-list'),
+    path('admin-child-group-add-new/', views.children_group_add_child_view, name='admin-child-group-add-new'),
 
     path('admin-contact/info/<int:pk>', views.contact_info_view, name='admin-contact-info'),
     path('admin-contact-delete/<int:pk>', views.contact_delete_view, name='admin-contact-delete'),

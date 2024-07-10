@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required, permission_required
 from contact.forms import ContactForm
 from contact.models import Contact
 from user.models import Teacher
-from guardian.shortcuts import get_objects_for_user,get_objects_for_group
-from user.models import ChildrenGroup
+from guardian.shortcuts import get_objects_for_user
+from user.models import ChildrenGroup, Child
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
+from django.db.models import Prefetch
 
 
 @login_required
@@ -75,12 +75,21 @@ def teacher_list_view(request):
 @permission_required("user.can_view_children_group")
 def children_group_members_view(request):
     try:
-        children_group = get_objects_for_user(
-            request.user, 'user.can_view_strawberry_group', klass=ChildrenGroup)
-        print(children_group)
-        return render(request,"admin_panel/child-group-list.html", {"children_group": children_group})
-    except:
+        children_group_qs = get_objects_for_user(request.user, 'user.can_view_strawberry_group', klass=ChildrenGroup)
+        children_group_prefetch = Prefetch('children_group', queryset=children_group_qs, to_attr='prefetched_children_groups')
+        children = Child.objects.filter().prefetch_related(children_group_prefetch)
+        child_in_group = []
+        for child in children:
+            if children_group_qs[0] == child.prefetched_children_groups:
+                child_in_group.append(child)
+        return render(request, "admin_panel/child-group-list.html", {"children": child_in_group})
+
+    except Exception as e:
+        print(f"Error in children_group_members_view: {e}")
         return redirect("admin_panel:admin-list")
 
-
+@login_required
+@permission_required("user.can_view_children_group")
+def children_group_add_child_view(request):
+    children_group_qs = get_objects_for_user(request.user, 'user.can_view_strawberry_group', klass=ChildrenGroup)
 

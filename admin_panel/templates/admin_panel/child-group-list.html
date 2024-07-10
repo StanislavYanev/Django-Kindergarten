@@ -5,10 +5,17 @@
 {% endblock %}
 
 {% block content %}
-    {% for child in children_group %}
+    <a href="{% url "admin_panel:admin-child-group-add-new" %}">Add new child</a>
+    {% for child in children %}
         <div class="container box">
+            <p>{{ children_group_qs.name }}</p>
             <ul class="special">
-                <li>Name: {{ child.name }}</li>
+                <li>Name: {{ child.name }} {{ child.last_name }}</li>
+                <li>Gender: {{ child.gender }}</li>
+                <li>Short description: {{ child.short_description }}</li>
+                <li>Group: {{ child.prefetched_children_groups }}</li>
+
+
             </ul>
         </div>
     {% endfor %}
