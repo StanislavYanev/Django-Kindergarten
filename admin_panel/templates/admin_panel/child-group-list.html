@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Teacher List
+    Group Child List
 {% endblock %}
 
 {% block content %}
-    <a href="{% url "admin_panel:admin-child-group-add-new" %}">Add new child</a>
+    <a href="">Add new child to group </a>
     {% for child in children %}
         <div class="container box">
-            <p>{{ children_group_qs.name }}</p>
             <ul class="special">
                 <li>Name: {{ child.name }} {{ child.last_name }}</li>
                 <li>Gender: {{ child.gender }}</li>

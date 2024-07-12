@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Event menu{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/admin-panel.css' %}">
+{% endblock %}
+{% block content %}
+
+    <div class="container box">
+        <ul class="special">
+            <li><a href="">Create template invitation </a></li>
+            <li><a href="">Send invitation to Group members </a></li>
+            <li> <a href="">View current events </a></li>
+        </ul>
+    </div>
+
+
+
+
+{#    <h3>"Let's create a new, fun, and stylish event for our kindergarten!"</h3>#}
+    {#    <h3>Event Name: </h3>#}
+    {#    <h3>Theme: </h3>#}
+    {#    <h3>Purpose: </h3>#}
+    {#    <h3>Venue: </h3>#}
+    {#    <h3>Treasure Hunt:</h3>#}
+    {#    <h3>Obstacle Course:</h3>#}
+    {#    <h3>Nature Walk:</h3>#}
+
+
+{% endblock %}

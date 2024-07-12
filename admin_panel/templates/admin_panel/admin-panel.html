@@ -19,8 +19,8 @@
                  <li><a href="">Children Groups</a></li>
                 <li><a href="{% url 'admin_panel:admin-teacher-list' %}">Teachers</a></li>
             {% endif %}
-            <li><a href="">Parents information</a></li>
-            <li><a href="">Create New Event</a></li>
+            <li><a href="{% url 'admin_panel:admin-search-parent' %}">Parents information</a></li>
+            <li><a href="{% url 'admin_panel:admin-new-event' %}">Create New Event</a></li>
             <li><a href="">Manage Gallery</a></li>
         </ul>
     </div>

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %} Search Parent {% endblock %}
+{% block content %}
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+    <h2>Results:</h2>
+    <ul>
+        {% for parent in results %}
+            <li>{{ parent.name}} {{ parent.last_name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
