@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Edit comment
+{% endblock %}
+
+{% block content %}
+
+    <div class="container box">
+        <h2>Confirm Edit</h2>
+        <p>Are you sure you want to Edit "{{ event.name }}"?</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+                <p></p>
+                <p>Name:</p>
+                <p>{{ event.name }}</p>
+                <p>{{ form.name }}</p>
+            </div>
+            <div class="form-floating mb-3">
+                <p>Venue:</p>
+                <p>{{ event.venue }}</p>
+                <p>{{ form.venue }}</p>
+            </div>
+            <div class="form-floating mb-3">
+                <p>Date:</p>
+                {{ event.date }}
+                {{ form.date }}
+            </div>
+            <div class="form-floating mb-3">
+                <p>Person responsible</p>
+                {{ event.person_responsible }}
+                {{ form.person_responsible }}
+            </div>
+            <div class="form-floating mb-3">
+                <p>Description:</p>
+                {{ event.description }}
+                {{ form.description }}
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+
+        </form>
+        <div>
+            <a href="{% url 'admin_panel:admin-new-event-list' %}">Cancel</a>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+

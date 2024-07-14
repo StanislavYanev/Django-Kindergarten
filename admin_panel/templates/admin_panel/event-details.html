@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Event Detail
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/admin-contact.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container box">
+        <ul class="special">
+            <table class="container">
+                <tr>
+                    <th>Name:</th>
+                    <td>{{ event.name }}</td>
+                </tr>
+                <tr>
+                    <th>Venue :</th>
+                    <td>{{ event.venue }}</td>
+                </tr>
+                <tr>
+                    <th>Date :</th>
+                    <td>{{ event.date }}</td>
+                </tr>
+                <tr>
+                    <th>Person responsible :</th>
+                    <td>{{ event.person_responsible }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ event.description }}</td>
+                </tr>
+            </table>
+        </ul>
+
+    </div>
+
+{% endblock %}
+
+
+

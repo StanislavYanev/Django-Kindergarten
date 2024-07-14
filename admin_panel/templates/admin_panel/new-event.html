@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}New Event{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/admin-panel.css' %}">
+{% endblock %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Event</button>
+    </form>
+
+
+{% endblock %}

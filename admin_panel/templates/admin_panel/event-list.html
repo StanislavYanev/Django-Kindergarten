@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Admin Panel
+{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/admin-contact.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container box">
+        <ul class="special">
+            <table class="container">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Venue</th>
+                    <th>Date</th>
+                    <th>Person responsible</th>
+                    <th>Send Invitation</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    <tr>
+                        <td><a href="{% url 'admin_panel:admin-event-details' event.pk %}">{{ event.name }}</a> </td>
+                        <td>{{ event.venue}}</td>
+                        <td>{{ event.date}}</td>
+                        <td>{{ event.person_responsible}}</td>
+                        <td><a href="{% url 'admin_panel:admin-event-send' event.pk %}">Send</a></td>
+                        <td><a href="{%  url 'admin_panel:admin-event-edit' event.pk %}">Edit</a></td>
+                        <td><a href="{% url 'admin_panel:admin-event-delete' event.pk %}">Delete</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </ul>
+    </div>
+{% endblock %}

@@ -8,7 +8,10 @@ from user.models import ChildrenGroup, Child
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
 from django.db.models import Prefetch
-from .forms import ChildForm, SearchChildForm
+from .forms import ChildForm, SearchChildForm, EventForm
+from .models import Event
+from django.conf import settings
+from django.core.mail import send_mail
 
 
 @login_required
@@ -92,22 +95,6 @@ def children_group_members_view(request):
         return redirect("admin_panel:admin-list")
 
 
-# This need more functionality on Parent-Child model to work properly
-# @login_required
-# @permission_required("user.can_view_children_group")
-# def children_group_add_child_view(request):
-#     children_group_qs = get_objects_for_user(request.user, 'user.can_view_strawberry_group', klass=ChildrenGroup)clear
-#     if request.method == 'POST':
-#         form = ChildForm(request.POST)
-#         form.children_group = children_group_qs[0]
-#         if form.is_valid():
-#             form.save()
-#             return redirect('admin_panel:admin-contact')
-#     else:
-#         form = ChildForm()
-#     return render(request,"", {"form": form})
-
-
 @login_required
 def parent_group_members_view(request):
     all_parent = Parent.objects.all()
@@ -129,4 +116,75 @@ def search_child_parent(request):
 
 @login_required
 def new_event_view(request):
-    return render(request, 'admin_panel/admin-panel-new-event.html')
+    return render(request, 'admin_panel/admin-panel-new-event.html', )
+
+
+@login_required
+def new_event_create_view(request):
+    if request.method == 'POST':
+        form = EventForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_panel:admin-new-event-list')
+    else:
+        form = EventForm()
+    return render(request, 'admin_panel/new-event.html', {"form": form})
+
+
+@login_required
+def new_event_list_view(request):
+    events = Event.objects.all()
+    print(events)
+    return render(request, "admin_panel/event-list.html", {"events": events})
+
+
+@login_required
+def event_details_view(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    return render(request, "admin_panel/event-details.html", {"event": event})
+
+
+@login_required
+def event_edit_view(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    form = EventForm(instance=event)
+    if request.method == 'POST':
+        form = EventForm(request.POST, instance=event)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_panel:admin-event-list')
+    else:
+        form = EventForm(instance=event)
+    return render(request, 'admin_panel/edit-event.html', {"form": form, "event": event})
+
+
+@login_required
+def event_delete_view(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    if request.method == 'POST':
+        event.delete()
+        return redirect('admin_panel:admin-new-event-list')
+    return render(request, 'admin_panel/event-delete.html', {"event": event})
+
+
+def send_mail_for_event(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    name = event.name
+    venue = event.venue
+    person_responsible = event.person_responsible
+    print("yes")
+    # name = event.cleaned_data['name']
+    # venue = form.cleaned_data['venue']
+    # date = form.cleaned_data['date']
+    # person_responsible = form.cleaned_data['person_responsible']
+    # description = form.cleaned_data['description']
+    # email = form.cleaned_data['email']
+
+    subject = f"New event {name} {venue}"
+    message_body = f"New event {name} {venue} has been sent from {person_responsible}"
+    recipient_list = ['styanev89@gmail.com']
+    from_email = settings.DEFAULT_FROM_EMAIL
+
+    send_mail(subject, message_body, from_email, recipient_list)
+    print("success")
+    return render(request, "admin_panel/success-send.html", {'event': event})
